@@ -1,0 +1,38 @@
+backend:
+  name: github
+  repo: gamezyra6-lang/my-gaming-site
+  branch: main
+
+media_folder: images
+public_folder: /images
+
+collections:
+  - name: site
+    label: Website
+    files:
+      - label: Website text
+        name: site
+        file: content/site.json
+        fields:
+          - { label: Site name, name: siteName, widget: string }
+          - { label: Main headline, name: heroTitle, widget: string }
+          - { label: Headline description, name: heroText, widget: text }
+          - { label: Main button text, name: heroButton, widget: string }
+          - { label: Games heading, name: gamesTitle, widget: string }
+          - label: Games
+            name: games
+            widget: list
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: text, widget: text }
+          - { label: News heading, name: newsTitle, widget: string }
+          - label: News posts
+            name: news
+            widget: list
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: text, widget: text }
+          - { label: Contact heading, name: contactTitle, widget: string }
+          - { label: Contact text, name: contactText, widget: text }
+          - { label: Email address, name: email, widget: string }
+          - { label: Footer text, name: footer, widget: string }
