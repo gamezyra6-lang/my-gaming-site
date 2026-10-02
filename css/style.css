@@ -81,3 +81,23 @@ footer { padding: 2rem 6vw; border-top: 1px solid var(--line); text-align: cente
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* multi-page additions */
+.game-list li:hover { background: #262a2f; }
+.game-list a { display: block; padding: 1.5rem; }
+.game-list li { padding: 0; }
+.page-title { padding-top: 4rem; }
+.filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+.filters button {
+  background: none; color: var(--muted); border: 1px solid var(--line);
+  padding: 0.4rem 1rem; border-radius: 4px; font: inherit; cursor: pointer;
+}
+.filters button.on, .filters button:hover { color: var(--text); border-color: var(--accent); }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); padding: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.card .button { align-self: flex-start; margin-top: auto; }
+.meta { font-size: 0.9rem; color: var(--accent); }
+.post-link:hover { color: var(--accent); }
+.post-body p { margin-bottom: 1.2rem; max-width: 65ch; color: var(--text); }
+.back { display: inline-block; margin-bottom: 1.5rem; color: var(--accent); }
+article { padding: 1.25rem 0; }
