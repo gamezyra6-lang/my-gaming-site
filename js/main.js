@@ -1,38 +1,122 @@
+const $ = (id) => document.getElementById(id);
+const getJSON = (url) =>
+  fetch(url).then((r) => {
+    if (!r.ok) throw new Error(url);
+    return r.json();
+  });
+
+function el(tag, className, text) {
+  const e = document.createElement(tag);
+  if (className) e.className = className;
+  if (text !== undefined) e.textContent = text;
+  return e;
+}
 function setText(id, text) {
-  document.getElementById(id).textContent = text || "";
+  const n = $(id);
+  if (n) n.textContent = text || "";
+}
+function safeLink(url) {
+  return /^https?:\/\//i.test(url || "") ? url : "";
+}
+function postUrl(post) {
+  return "post.html?post=" + encodeURIComponent(post.slug);
 }
 
-function addItem(parent, tag, title, text) {
-  const item = document.createElement(tag);
-  const h3 = document.createElement("h3");
-  const p = document.createElement("p");
-  h3.textContent = title || "";
-  p.textContent = text || "";
-  item.append(h3, p);
-  parent.append(item);
-}
-
-fetch("content/site.json")
-  .then((res) => res.json())
+/* Shared parts: header, footer, home page */
+getJSON("content/site.json")
   .then((d) => {
-    document.title = d.siteName + " | PC Gaming";
     setText("siteName", d.siteName);
+    setText("footerText", d.footer);
+    if (!$("heroTitle")) return;
+    document.title = d.siteName + " | Free PC games";
     setText("heroTitle", d.heroTitle);
     setText("heroText", d.heroText);
     setText("heroButton", d.heroButton);
     setText("gamesTitle", d.gamesTitle);
-    setText("newsTitle", d.newsTitle);
     setText("contactTitle", d.contactTitle);
     setText("contactText", d.contactText);
-    setText("footerText", d.footer);
-    document.getElementById("emailButton").href = "mailto:" + d.email;
-
-    const games = document.getElementById("gameList");
-    (d.games || []).forEach((g) => addItem(games, "li", g.title, g.text));
-
-    const news = document.getElementById("newsList");
-    (d.news || []).forEach((n) => addItem(news, "article", n.title, n.text));
+    $("emailButton").href = "mailto:" + d.email;
+    const list = $("gameList");
+    (d.games || []).forEach((g) => {
+      const li = el("li");
+      const a = el("a");
+      a.href = "games.html?category=" + encodeURIComponent(g.title);
+      a.append(el("h3", "", g.title), el("p", "", g.text));
+      li.append(a);
+      list.append(li);
+    });
   })
-  .catch(() => {
-    setText("heroTitle", "Content could not be loaded.");
+  .catch(() => {});
+
+/* Games page */
+if ($("gameGrid")) {
+  getJSON("content/games.json").then((d) => {
+    const games = d.games || [];
+    const categories = ["All"].concat([...new Set(games.map((g) => g.category))]);
+    let active = new URLSearchParams(location.search).get("category") || "All";
+    if (!categories.includes(active)) active = "All";
+
+    function draw() {
+      const filters = $("filters");
+      const grid = $("gameGrid");
+      filters.replaceChildren();
+      grid.replaceChildren();
+      categories.forEach((c) => {
+        const b = el("button", c === active ? "on" : "", c);
+        b.onclick = () => { active = c; draw(); };
+        filters.append(b);
+      });
+      games
+        .filter((g) => active === "All" || g.category === active)
+        .forEach((g) => {
+          const card = el("article", "card");
+          card.append(el("span", "meta", g.category), el("h3", "", g.title), el("p", "", g.description));
+          const link = safeLink(g.link);
+          if (link) {
+            const a = el("a", "button", "Download");
+            a.href = link;
+            a.target = "_blank";
+            a.rel = "noopener";
+            card.append(a);
+          }
+          grid.append(card);
+        });
+    }
+    draw();
   });
+}
+
+/* News list page */
+if ($("newsList")) {
+  getJSON("content/news.json").then((d) => {
+    const list = $("newsList");
+    (d.posts || []).forEach((p) => {
+      const item = el("article");
+      const h3 = el("h3");
+      const a = el("a", "post-link", p.title);
+      a.href = postUrl(p);
+      h3.append(a);
+      item.append(el("p", "meta", p.date), h3, el("p", "", p.summary));
+      list.append(item);
+    });
+  });
+}
+
+/* Single post page */
+if ($("postBody")) {
+  getJSON("content/news.json").then((d) => {
+    const slug = new URLSearchParams(location.search).get("post");
+    const post = (d.posts || []).find((p) => p.slug === slug);
+    if (!post) {
+      setText("postTitle", "Post not found");
+      return;
+    }
+    document.title = post.title;
+    setText("postTitle", post.title);
+    setText("postDate", post.date);
+    const body = $("postBody");
+    String(post.body || "")
+      .split(/\n\s*\n/)
+      .forEach((para) => body.append(el("p", "", para.trim())));
+  });
+}
