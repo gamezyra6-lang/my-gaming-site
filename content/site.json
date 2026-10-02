@@ -25,12 +25,21 @@
       "text": "Create a hero and explore huge worlds."
     }
   ],
-  "newsTitle": "Latest posts",
+  "newsTitle": "Latest updates",
   "heroText": "Browse free games for every taste, from fast shooters to slow strategy, and download them in a few clicks.",
   "heroButton": "Browse free games",
   "contactText": "Missing a game or found a broken link? Tell us and we'll fix it fast.",
   "siteName": "GameZyra6",
-  "news": [],
+  "news": [
+    {
+      "title": "New games added every week",
+      "text": "Check back often. We add new free PC games to every category."
+    },
+    {
+      "title": "How to install a downloaded game",
+      "text": "Download, unzip, run the setup file, and you're ready to play."
+    }
+  ],
   "gamesTitle": "Free games to download",
   "contactTitle": "Contact us",
   "footer": "© 2026 GameZyra6. All rights reserved.",
