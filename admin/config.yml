@@ -46,6 +46,7 @@ collections:
                 options: [Action, Strategy, Horror, Simulation, RPG, Fighting, Racing, Indie]
               - { label: Description, name: description, widget: text }
               - { label: Download link (official page, starts with https://), name: link, widget: string, required: false }
+              - { label: Picture, name: image, widget: image, required: false }
       - label: News posts
         name: news
         file: content/news.json
