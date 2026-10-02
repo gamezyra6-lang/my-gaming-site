@@ -7,10 +7,10 @@ media_folder: images
 public_folder: /images
 
 collections:
-  - name: site
+  - name: pages
     label: Website
     files:
-      - label: Website text
+      - label: Home page and site text
         name: site
         file: content/site.json
         fields:
@@ -18,17 +18,11 @@ collections:
           - { label: Main headline, name: heroTitle, widget: string }
           - { label: Headline description, name: heroText, widget: text }
           - { label: Main button text, name: heroButton, widget: string }
-          - { label: Games heading, name: gamesTitle, widget: string }
-          - label: Games
+          - { label: Categories heading, name: gamesTitle, widget: string }
+          - label: Categories
             name: games
             widget: list
-            fields:
-              - { label: Title, name: title, widget: string }
-              - { label: Description, name: text, widget: text }
-          - { label: News heading, name: newsTitle, widget: string }
-          - label: News posts
-            name: news
-            widget: list
+            summary: "{{fields.title}}"
             fields:
               - { label: Title, name: title, widget: string }
               - { label: Description, name: text, widget: text }
@@ -36,3 +30,33 @@ collections:
           - { label: Contact text, name: contactText, widget: text }
           - { label: Email address, name: email, widget: string }
           - { label: Footer text, name: footer, widget: string }
+      - label: Games page
+        name: games
+        file: content/games.json
+        fields:
+          - label: Games
+            name: games
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Game name, name: title, widget: string }
+              - label: Category
+                name: category
+                widget: select
+                options: [Action, Strategy, Horror, Simulation, RPG, Fighting, Racing, Indie]
+              - { label: Description, name: description, widget: text }
+              - { label: Download link (official page, starts with https://), name: link, widget: string, required: false }
+      - label: News posts
+        name: news
+        file: content/news.json
+        fields:
+          - label: Posts
+            name: posts
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Page name (lowercase, dashes, no spaces), name: slug, widget: string }
+              - { label: Date, name: date, widget: string, hint: "Example: October 2, 2026" }
+              - { label: Short summary, name: summary, widget: text }
+              - { label: Full post (leave a blank line between paragraphs), name: body, widget: text }
