@@ -1,21 +1,27 @@
 {
   "games": [
     {
-      "title": "SuperTuxKart",
+      "title": "Forza Horizon 5",
       "category": "Racing",
       "description": "An open-source kart racer with tracks, items and online play.",
       "link": "https://supertuxkart.net"
     },
     {
-      "title": "0 A.D.",
-      "category": "Strategy",
-      "description": "A free, open-source ancient warfare strategy game.",
+      "title": "Stars Wars Outlaws",
+      "category": "Action",
+      "description": "A free, open-source ancient warfare action game.",
       "link": "https://play0ad.com"
     },
     {
-      "title": "OpenRA",
-      "category": "Strategy",
+      "title": "Still Wakes the Deep",
+      "category": "Horror",
       "description": "Modern versions of classic real-time strategy games.",
+      "link": "https://www.openra.net"
+    },
+    {
+      "title": "Football Manager 2024",
+      "category": "Simulation",
+      "description": "Enjoy the football action in the realistic way!",
       "link": "https://www.openra.net"
     }
   ]
