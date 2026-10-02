@@ -1,0 +1,18 @@
+{
+  "posts": [
+    {
+      "title": "New games added every week",
+      "slug": "new-games-every-week",
+      "date": "October 2, 2026",
+      "summary": "Check back often. We add new free PC games to every category.",
+      "body": "We add new free PC games to every category, so check back often.\n\nUse the Games page to filter by category and find something you like."
+    },
+    {
+      "title": "How to install a downloaded game",
+      "slug": "how-to-install-a-game",
+      "date": "October 2, 2026",
+      "summary": "Download, unzip, run the setup file, and you're ready to play.",
+      "body": "Download the game from its official page.\n\nIf it comes as a zip file, right-click it and choose Extract All.\n\nOpen the extracted folder, run the setup file, and follow the steps on screen."
+    }
+  ]
+}
