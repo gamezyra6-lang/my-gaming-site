@@ -1,20 +1,28 @@
 {
   "games": [
     {
-      "title": "Strategy",
-      "text": "Slow, deep games that reward planning."
+      "title": "Action",
+      "text": "Fast-paced games for quick reflexes."
     },
     {
-      "title": "Shooters",
-      "text": "Fast and competitive. Low latency matters most."
+      "title": "Racing",
+      "text": "Speed, drifts and tight corners."
     },
     {
-      "title": "Open world",
-      "text": "Big maps and detailed visuals."
+      "title": "Simulation",
+      "text": "Build, drive, farm or run your own world."
     },
     {
-      "title": "Indie",
-      "text": "Small teams, big ideas. Runs on almost any PC."
+      "text": "Plan your moves and outsmart your rivals.",
+      "title": "Strategy"
+    },
+    {
+      "text": "One-on-one battles against friends or the computer.",
+      "title": "Fighting"
+    },
+    {
+      "title": "RPG",
+      "text": "Create a hero and explore huge worlds."
     }
   ],
   "newsTitle": "Latest posts",
@@ -23,7 +31,7 @@
   "contactText": "Missing a game or found a broken link? Tell us and we'll fix it fast.",
   "siteName": "GameZyra6",
   "news": [],
-  "gamesTitle": "Games worth installing",
+  "gamesTitle": "Free games to download",
   "contactTitle": "Contact us",
   "footer": "© 2026 GameZyra6. All rights reserved.",
   "email": "gamezyra6@gmail.com",
