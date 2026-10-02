@@ -1,8 +1,9 @@
 body {
-    background-color: #eaf2ff;
-    color: #14213d;
+  background-color: lightblue !important;
+  color: navy !important;
+  font-family: Arial, sans-serif;
 }
 
 h1 {
-    color: #1769ff;
+  color: blue !important;
 }
