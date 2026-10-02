@@ -3,34 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PC Gaming</title>
+  <title>Gamezyra</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="site-header">
-    <a class="logo" href="#top" id="siteName"></a>
+    <a class="logo" href="index.html" id="siteName"></a>
     <nav>
-      <a href="#games">Games</a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="games.html">Games</a>
+      <a href="news.html">News</a>
+      <a href="index.html#contact">Contact</a>
     </nav>
   </header>
 
-  <main id="top">
+  <main>
     <section class="hero">
       <h1 id="heroTitle"></h1>
       <p id="heroText"></p>
-      <a class="button" href="#games" id="heroButton"></a>
+      <a class="button" href="games.html" id="heroButton"></a>
     </section>
 
-    <section id="games">
+    <section id="categories">
       <h2 id="gamesTitle"></h2>
       <ul class="game-list" id="gameList"></ul>
-    </section>
-
-    <section id="news">
-      <h2 id="newsTitle"></h2>
-      <div id="newsList"></div>
     </section>
 
     <section id="contact">
@@ -41,7 +37,6 @@
   </main>
 
   <footer><p id="footerText"></p></footer>
-
   <script src="js/main.js"></script>
 </body>
 </html>
