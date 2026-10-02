@@ -9,12 +9,18 @@
 <body>
   <header class="site-header">
     <a class="logo" href="index.html" id="siteName"></a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="games.html">Games</a>
-      <a href="news.html">News</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
+    <div class="nav-card">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="news.html">News</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <form class="search" action="games.html" method="get" role="search">
+        <input type="search" name="q" placeholder="Search games" aria-label="Search games">
+        <button type="submit">Search</button>
+      </form>
+    </div>
   </header>
 
   <main>
