@@ -1,0 +1,22 @@
+{
+  "games": [
+    {
+      "title": "SuperTuxKart",
+      "category": "Racing",
+      "description": "An open-source kart racer with tracks, items and online play.",
+      "link": "https://supertuxkart.net"
+    },
+    {
+      "title": "0 A.D.",
+      "category": "Strategy",
+      "description": "A free, open-source ancient warfare strategy game.",
+      "link": "https://play0ad.com"
+    },
+    {
+      "title": "OpenRA",
+      "category": "Strategy",
+      "description": "Modern versions of classic real-time strategy games.",
+      "link": "https://www.openra.net"
+    }
+  ]
+}
