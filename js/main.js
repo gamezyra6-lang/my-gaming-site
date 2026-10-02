@@ -18,6 +18,9 @@ function setText(id, text) {
 function safeLink(url) {
   return /^https?:\/\//i.test(url || "") ? url : "";
 }
+function safeImage(url) {
+  return /^(\/(?!\/)|https?:\/\/)/i.test(url || "") ? url : "";
+}
 function postUrl(post) {
   return "post.html?post=" + encodeURIComponent(post.slug);
 }
@@ -53,7 +56,12 @@ if ($("gameGrid")) {
   getJSON("content/games.json").then((d) => {
     const games = d.games || [];
     const categories = ["All"].concat([...new Set(games.map((g) => g.category))]);
-    let active = new URLSearchParams(location.search).get("category") || "All";
+    const params = new URLSearchParams(location.search);
+    const rawQuery = (params.get("q") || "").trim();
+    const q = rawQuery.toLowerCase();
+    const box = document.querySelector(".search input");
+    if (box) box.value = rawQuery;
+    let active = params.get("category") || "All";
     if (!categories.includes(active)) active = "All";
 
     function draw() {
@@ -66,10 +74,22 @@ if ($("gameGrid")) {
         b.onclick = () => { active = c; draw(); };
         filters.append(b);
       });
-      games
-        .filter((g) => active === "All" || g.category === active)
-        .forEach((g) => {
+      const shown = games.filter(
+        (g) =>
+          (active === "All" || g.category === active) &&
+          (!q || [g.title, g.category, g.description].join(" ").toLowerCase().includes(q))
+      );
+      if (!shown.length) grid.append(el("p", "", "No games found."));
+      shown.forEach((g) => {
           const card = el("article", "card");
+          const pic = safeImage(g.image);
+          if (pic) {
+            const img = el("img", "card-img");
+            img.src = pic;
+            img.alt = g.title;
+            img.loading = "lazy";
+            card.append(img);
+          }
           card.append(el("span", "meta", g.category), el("h3", "", g.title), el("p", "", g.description));
           const link = safeLink(g.link);
           if (link) {
@@ -120,3 +140,10 @@ if ($("postBody")) {
       .forEach((para) => body.append(el("p", "", para.trim())));
   });
 }
+
+/* Highlight the current page in the menu */
+const here = location.pathname.split("/").pop().replace(/\.html$/, "") || "index";
+const section = here === "post" ? "news" : here;
+document.querySelectorAll("nav a").forEach((a) => {
+  if (a.getAttribute("href") === section + ".html") a.classList.add("on");
+});
