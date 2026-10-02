@@ -1,0 +1,22 @@
+{
+  "siteName": "Rigline",
+  "heroTitle": "Build it right. Play it smooth.",
+  "heroText": "Honest guides and game picks for people who care about frame rates more than flashing lights.",
+  "heroButton": "See the games",
+  "gamesTitle": "Games worth installing",
+  "games": [
+    { "title": "Strategy", "text": "Slow, deep games that reward planning." },
+    { "title": "Shooters", "text": "Fast and competitive. Low latency matters most." },
+    { "title": "Open world", "text": "Big maps and detailed visuals." },
+    { "title": "Indie", "text": "Small teams, big ideas. Runs on almost any PC." }
+  ],
+  "newsTitle": "Latest posts",
+  "news": [
+    { "title": "How to pick a graphics card", "text": "Start with your monitor resolution, then match the card to it." },
+    { "title": "Do you need 32 GB of RAM?", "text": "For most players, 16 GB still works." }
+  ],
+  "contactTitle": "Get in touch",
+  "contactText": "Send a message and we will reply within two days.",
+  "email": "hello@example.com",
+  "footer": "© 2026 Rigline. All rights reserved."
+}
